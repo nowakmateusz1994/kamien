@@ -5,37 +5,26 @@ let button = document.querySelector('.button');
 let endGame = document.querySelector('.endGame')
 
 
-function checkWin(name) {
+function checkWin(name, value) {
     if (
-        ((cells[0].innerHTML === cells[1].innerHTML && cells[1].innerHTML === cells[2].innerHTML)
-            && (cells[0].innerHTML != "" && cells[1].innerHTML != "" && cells[2].innerHTML != ""))
+        (cells[0].innerHTML === value && cells[1].innerHTML === value && cells[2].innerHTML === value)
         ||
-        ((cells[3].innerHTML === cells[4].innerHTML && cells[4].innerHTML === cells[5].innerHTML)
-            && (cells[3].innerHTML != "" && cells[4].innerHTML != "" && cells[5].innerHTML != ""))
+        (cells[3].innerHTML === value && cells[4].innerHTML === value && cells[5].innerHTML === value)
         ||
-        ((cells[6].innerHTML === cells[7].innerHTML && cells[7].innerHTML === cells[8].innerHTML)
-            && (cells[6].innerHTML != "" && cells[7].innerHTML != "" && cells[8].innerHTML != ""))
+        (cells[6].innerHTML === value && cells[7].innerHTML === value && cells[8].innerHTML === value)
         ||
-        ((cells[0].innerHTML === cells[3].innerHTML && cells[3].innerHTML === cells[6].innerHTML)
-            && (cells[0].innerHTML != "" && cells[3].innerHTML != "" && cells[6].innerHTML != ""))
+        (cells[0].innerHTML === value && cells[3].innerHTML === value && cells[6].innerHTML === value)
         ||
-        ((cells[1].innerHTML === cells[4].innerHTML && cells[4].innerHTML === cells[7].innerHTML)
-            && (cells[1].innerHTML != "" && cells[4].innerHTML != "" && cells[7].innerHTML != ""))
+        (cells[1].innerHTML === value && cells[4].innerHTML === value && cells[7].innerHTML === value)
         ||
-        ((cells[2].innerHTML === cells[5].innerHTML && cells[5].innerHTML === cells[8].innerHTML)
-            && (cells[2].innerHTML != "" && cells[5].innerHTML != "" && cells[8].innerHTML != ""))
+        (cells[2].innerHTML === value && cells[5].innerHTML === value && cells[8].innerHTML === value)
         ||
-        ((cells[0].innerHTML === cells[4].innerHTML && cells[4].innerHTML === cells[8].innerHTML)
-            && (cells[0].innerHTML != "" && cells[4].innerHTML != "" && cells[8].innerHTML != ""))
+        (cells[0].innerHTML === value && cells[4].innerHTML === value && cells[8].innerHTML === value)
         ||
-        ((cells[2].innerHTML === cells[4].innerHTML && cells[4].innerHTML === cells[6].innerHTML)
-            && (cells[2].innerHTML != "" && cells[4].innerHTML != "" && cells[6].innerHTML != ""))
+        (cells[2].innerHTML === value && cells[4].innerHTML === value && cells[6].innerHTML === value)
     ) {
-        setTimeout(function () {
-            h2.innerHTML = name;
-            endGame.style.display = 'block';
-        }, 1000)
-
+        h2.innerHTML = name;
+        endGame.style.display = 'block';
     }
 }
 
@@ -45,7 +34,7 @@ function computerChoice() {
 
     if (cells[i].innerHTML === "") {
         cells[i].innerHTML = "O"
-        checkWin('Wygrał komputer');
+        checkWin('Wygrał komputer', "O");
     } else {
         computerChoice()
     }
@@ -55,7 +44,7 @@ function computerChoice() {
 function playerChoice() {
     if (this.innerHTML === "") {
         this.innerHTML = "X";
-        checkWin('Wygrał Gracz');
+        checkWin('Wygrał Gracz', "X");
 
         if (cells[0].innerHTML === "" || cells[1].innerHTML === "" || cells[2].innerHTML === "" || cells[3].innerHTML === "" || cells[4].innerHTML === "" || cells[5].innerHTML === "" || cells[6].innerHTML === "" || cells[7].innerHTML === "" || cells[8].innerHTML === "") {
             computerChoice();
