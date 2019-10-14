@@ -24,7 +24,7 @@ function checkWin(name, value) {
         (cells[2].innerHTML === value && cells[4].innerHTML === value && cells[6].innerHTML === value)
     ) {
         h2.innerHTML = name;
-        endGame.style.display = 'block';
+        endGame.style.display = 'block'
     }
 }
 
